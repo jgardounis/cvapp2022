@@ -88,7 +88,7 @@ DATABASES = {
         'NAME': 'cvappdb',
         'USER': 'root',
         'PASSWORD': 'root!!$rcn3t',
-        'HOST': '127.0.0.1'
+        'HOST': 'localhost'
         },
 }
 db_from_env = dj_database_url.config(conn_max_age=500)
