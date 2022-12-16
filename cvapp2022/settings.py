@@ -72,7 +72,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'cvapp2022.wsgi.application'
 
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=500)
+    'ENGINE': 'django.db.backends.mysql',
+    'default': dj_database_url.config(conn_max_age=500),
 }
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
