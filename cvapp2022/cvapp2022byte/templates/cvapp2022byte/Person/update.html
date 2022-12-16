@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Ενημέρωση Ατόμου</title>
+  </head>
+  <body>
+
+  <form action="{% url 'cvapp2022byte:person-edit' person.id %}" enctype="multipart/form-data" method="POST" class="post-form" >
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="save btn btn-default">Υποβολή</button>
+
+  </form>
+
+  </body>
+
+</html>
