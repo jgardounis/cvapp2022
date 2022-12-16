@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Διαχείριση Πτυχείων</title>
+    <style type="text/css">
+    	table,tr,td {
+    		border: solid 1px;	
+    	}    	
+    </style>
+  </head>
+  <body>
+  <strong>ΛΙΣΤΑ Πτυχείων</strong>
+  <br />
+  <br />
+  <a href="{% url 'cvapp_home' %}" class="btn btn-default"><-- Αρχική</a>
+  <br />
+  <a href="{% url 'cvapp2022byte:degree-create' %}" class="btn btn-default">+ Πτυχείο</a>
+  <br />
+{% if degrees %}
+	<table>
+		<thead>
+			<tr>
+				<th>
+					ΑΑ
+				</th>
+				<th>
+					ΠΤΥΧΕΙΟ
+				</th>			
+			</tr>
+		</thead>
+		<tbody>
+			{% for degree in degrees %}
+				<tr>
+					<td>
+						{{ degree.id }}
+					</td>
+					<td>
+						{{ degree.title }}
+					</td>					
+					<td>
+						<a href="{% url 'cvapp2022byte:degree-edit' degree.id %}">edit</a>
+					</td>
+					<td>
+						<a href="{% url 'cvapp2022byte:degree-delete' degree.id %}">delete</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% else %}
+ Δεν υπάρχουν καταχωρημένα πτυχεία!
+{% endif %}
+  </body>
+</html>
