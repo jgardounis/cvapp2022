@@ -88,6 +88,7 @@ DATABASES = {
         'NAME': 'cvappdb',
         'USER': 'root',
         'PASSWORD': 'root!!$rcn3t',
+        'HOST': 'localhost'
         },
 }
 
