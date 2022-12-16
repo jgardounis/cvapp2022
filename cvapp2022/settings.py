@@ -84,11 +84,13 @@ WSGI_APPLICATION = 'cvapp2022.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        # 'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'cvappdb',
         'USER': 'root',
         'PASSWORD': 'root!!$rcn3t',
-        'HOST': 'localhost'
+        'HOST': 'localhost',
+        'PORT': '5432',
         },
 }
 db_from_env = dj_database_url.config(conn_max_age=500)
