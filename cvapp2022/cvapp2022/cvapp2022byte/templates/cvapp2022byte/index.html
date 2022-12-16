@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+  <head>
+  	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  	<script type="text/javascript" src={% static "/person.js" %}></script>
+    <meta charset="UTF-8">
+    <title>Διαχείριση Βιογραφικού</title>
+    <style type="text/css">
+    	table,tr,td {
+    		border: solid 1px;	
+    	}    	
+    </style>
+  </head>
+  <body>
+  <strong>ΛΙΣΤΑ ΚΑΤΑΧΩΡΗΣΕΩΝ</strong>
+  <br />
+  <br />
+  <a href="{% url 'cvapp2022byte:degree-create' %}" class="btn btn-default">+ Πτυχείο</a> ||
+  <a href="{% url 'cvapp2022byte:degree-list' %}" class="btn btn-default">Λίστα Πτυχείων</a>
+  <br />
+  <br />
+  <a href="{% url 'cvapp2022byte:person-create' %}" class="btn btn-default">+ Πρόσωπο</a>
+  <br />  
+{% if persons %}
+	<table>
+		<thead>
+			<tr>
+				<th>
+					ΑΑ
+				</th>
+				<th>
+					ΟΝΟΜΑΤΕΠΩΝΥΜΟ
+				</th>
+				<th>
+					EMAIL
+				</th>
+				<th>
+					ΚΙΝΗΤΟ
+				</th>
+				<th>
+					ΠΤΥΧΕΙΟ
+				</th>
+				<th>
+					ΒΙΟΓΡΑΦΙΚΟ
+				</th>
+				<th>
+					ΔΗΜΙΟΥΡΓΗΘΗΚΕ
+				</th>			
+			</tr>
+		</thead>
+		<tbody>
+			{% for person in persons %}
+				<tr>
+					<td>
+						{{ person.id }}
+					</td>
+					<td>
+						{{ person.LastName }} {{ person.FirstName }}
+					</td>
+					<td>
+						{{ person.email }}					
+					</td>
+					<td>
+						{{ person.Mobile }}
+					</td>
+					<td>
+						{{ person.Degree }}
+					</td>
+					<td>
+						{{ person.file.name }}
+					</td>
+					<td>
+						{{ person.dateCreated }}
+					</td>
+					<td>
+						<a href="{% url 'cvapp2022byte:person-edit' person.id %}">edit</a>	
+					</td>
+					<td>
+						<a href="{% url 'cvapp2022byte:person-delete' person.id %}"> delete
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% else %}
+ Δεν υπάρχουν καταχωρήσεις!
+{% endif %}
+  </body>
+</html>
